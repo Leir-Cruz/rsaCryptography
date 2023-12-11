@@ -16,9 +16,10 @@ if __name__ == "__main__":
   cipherText = RsaCryptography.cipher(message, publicKey)
   print(f"Arquivo cifrado: {cipherText}\n")
 
-
-"""   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
+  privateKey = MillerRabin.findPrivateKey(totientNumber, e)
   print(f"chave privada: {privateKey}\n")
+
+"""   
 
   originalText = RsaCryptography.decrypt(cipherText, privateKey)
   print(f"Arquivo decifrado: {originalText}\n") """

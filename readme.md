@@ -38,3 +38,4 @@ Run Project
 - https://datatracker.ietf.org/doc/html/rfc8017
 - https://www.youtube.com/watch?v=zi7gfind7mE
 - https://www.youtube.com/watch?v=-ShwJqAalOk
+- https://gist.github.com/ppoffice/e10e0a418d5dafdd5efe9495e962d3d2

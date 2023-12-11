@@ -60,13 +60,9 @@ class MillerRabin:
     return publicKey
   
 
-  
-"""   def findPrivateKey(totientNumber, totientE):
-    print("Gerando chave privada... isso pode demorar um pouco ")
-    totientD = 0
-    while(((totientD * totientE) % totientNumber)!=1):
-      totientD += 1
-    return totientD """
+  def findPrivateKey(totientNumber, totientE):
+    totientD = pow(totientE, -1, totientNumber)
+    return totientD
 
 
     
