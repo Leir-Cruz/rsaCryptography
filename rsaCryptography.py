@@ -5,7 +5,7 @@ class RsaCryptography:
     convertedFile = Utils.convertFileToNumber(strFile)
     convertedFileSize = len(convertedFile)
     for i in range(convertedFileSize):
-      newLetter = (convertedFile[i] ** e % n)
+      newLetter = pow(convertedFile[i],e,n)
       convertedFile[i] = newLetter
     return convertedFile
   
@@ -13,6 +13,6 @@ class RsaCryptography:
     [n, d] = privateKey
     cipherTextSize = len(cipherText)
     for i in range(cipherTextSize):
-      newLetter = (cipherText[i] ** d % n)
+      newLetter = pow(cipherText[i],d,n)
       cipherText[i] = newLetter
     return cipherText

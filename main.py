@@ -9,12 +9,16 @@ if __name__ == "__main__":
   primeA = MillerRabin.generatePrime()
   primeB = MillerRabin.generatePrime()
 
-  publicKey = MillerRabin.findPublicKey(primeA, primeB);
+  [n, e, totientNumber] = MillerRabin.findPublicKeyAndTotient(primeA, primeB);
+  publicKey = [n, e]
   print(f"par chave pública: {publicKey}\n")
 
-"""   cipherText = RsaCryptography.cipher(message,)
+  cipherText = RsaCryptography.cipher(message, publicKey)
   print(f"Arquivo cifrado: {cipherText}\n")
 
-  originalText = RsaCryptography.decrypt(cipherText)
-  print(f"Arquivo decifrado: {originalText}\n")
- """
+
+"""   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
+  print(f"chave privada: {privateKey}\n")
+
+  originalText = RsaCryptography.decrypt(cipherText, privateKey)
+  print(f"Arquivo decifrado: {originalText}\n") """

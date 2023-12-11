@@ -52,21 +52,21 @@ class MillerRabin:
         print(f"{e}\n")
         return e  
   
-  def findTotientD(totientE):
-    d = 0
-    return d
   
-  def findPublicKey(primeA, primeB):
+  def findPublicKeyAndTotient(primeA, primeB):
     [n, totientNumber] = MillerRabin.totientFunction(primeA, primeB)
     e = MillerRabin.findTotientE(totientNumber)
-    publicKey = [n, e]
+    publicKey = [n, e, totientNumber]
     return publicKey
   
-  def findPrivateKey(publicKey):
-    [n, totientE] = publicKey
-    totientD = MillerRabin.findTotientD(totientE)
-    privateKey = [n, totientD]
-    return privateKey
+
+  
+"""   def findPrivateKey(totientNumber, totientE):
+    print("Gerando chave privada... isso pode demorar um pouco ")
+    totientD = 0
+    while(((totientD * totientE) % totientNumber)!=1):
+      totientD += 1
+    return totientD """
 
 
     
