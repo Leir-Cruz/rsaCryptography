@@ -9,10 +9,10 @@ class RsaCryptography:
       convertedFile[i] = newLetter
     return convertedFile
   
-  def decrypt(cipherText, privateKey):
+  def decrypt(intCipherText, privateKey):
     [n, d] = privateKey
-    cipherTextSize = len(cipherText)
+    cipherTextSize = len(intCipherText)
     for i in range(cipherTextSize):
-      newLetter = pow(cipherText[i],d,n)
-      cipherText[i] = newLetter
-    return cipherText
+      newLetter = pow(intCipherText[i],d,n)
+      intCipherText[i] = chr(newLetter)
+    return intCipherText

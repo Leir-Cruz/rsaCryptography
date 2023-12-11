@@ -19,7 +19,6 @@ if __name__ == "__main__":
   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
   print(f"chave privada: {privateKey}\n")
 
-"""   
 
-  originalText = RsaCryptography.decrypt(cipherText, privateKey)
-  print(f"Arquivo decifrado: {originalText}\n") """
+  originalText = RsaCryptography.decrypt(cipherText, [privateKey, n])
+  print(f"Arquivo decifrado: {originalText}\n")
