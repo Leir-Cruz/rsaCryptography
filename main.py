@@ -9,6 +9,9 @@ if __name__ == "__main__":
   primeA = MillerRabin.generatePrime()
   primeB = MillerRabin.generatePrime()
 
+  publicKey = MillerRabin.findPublicKey(primeA, primeB);
+  print(f"par chave pública: {publicKey}\n")
+
 """   cipherText = RsaCryptography.cipher(message,)
   print(f"Arquivo cifrado: {cipherText}\n")
 

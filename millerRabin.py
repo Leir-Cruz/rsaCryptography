@@ -1,5 +1,5 @@
 import random
-
+from utils import Utils
 class MillerRabin:
 
   def isPrime(number, rounds=40):
@@ -44,8 +44,13 @@ class MillerRabin:
     return [n, totientNumber]
   
   def findTotientE(totientNumber):
-    e = 0 #//todo
-    return e
+    print("Gerando coPrimo da chave pública... isso pode demorar um pouco")
+    while True:
+      e = random.randint(2, totientNumber)
+      if(Utils.isMutuallyPrime(totientNumber, e)):
+        print(f"coPrimo para chave pública encontrado!")
+        print(f"{e}\n")
+        return e  
   
   def findTotientD(totientE):
     d = 0

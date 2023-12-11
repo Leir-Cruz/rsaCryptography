@@ -1,3 +1,4 @@
+import math
 class Utils:
   def convertToNumber(character):
     return(ord("character"))
@@ -8,3 +9,8 @@ class Utils:
       strFile[i] = Utils.convertToNumber(strFile[i])
     print(f"arquivo convertido utilizando tabelas Ascii: {strFile}\n" )
     return strFile
+
+  def isMutuallyPrime(primeNumber, randomNumber):
+    if math.gcd(primeNumber, randomNumber) == 1:
+      return True
+    return False
