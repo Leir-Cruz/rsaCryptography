@@ -3,41 +3,46 @@ from utils import Utils
 class MillerRabin:
 
   def isPrime(number, rounds=40):
-    if number == 2 or number == 3:
+    if number == 2:
       return True
 
     if number % 2 == 0:
       return False
     
-    u = number -1
-    k = 0
+    r = 0
+    s = number - 1
 
-    while(u % 2 == 0):
-      u //= 2
-      k+= 1
+    while(s % 2 == 0):
+      r+= 1
+      s //= 2
     for _ in range(rounds):
-      a = random.randint(2, number - 2)
-      b = pow(a, u, number)
-      if a == 1 or a == number - 1:
+      a = random.randrange(2, number - 1)
+      x = pow(a, s, number)
+      if x == 1 or x == number - 1:
         continue
-      for _ in range(k - 1):
-        b = pow(b, 2, number)
-        if b == number - 1:
+      for _ in range(r - 1):
+        x = pow(x, 2, number)
+        if x == number - 1:
           break
-        else:
-          return False
+      else:
+        return False
     return True
+  
+  def randomOddValue():
+    number = random.randint(2 ** (1023 -1), 2 ** 1024 -1)
+    if number % 2 == 0:
+      number += 1
+    return number
     
 
   def generatePrime():
     print("Gerando número primo de 1024 bits... isso pode demorar um pouco")
-    while True:
-      print(".")
-      randomNumber = random.getrandbits(1024)
-      if(MillerRabin.isPrime(randomNumber)):
-        print("Número primo gerado com sucesso!")
-        print(f"{randomNumber}\n")
-        return randomNumber
+    randomNumber = MillerRabin.randomOddValue()
+    while MillerRabin.isPrime(randomNumber) == False:
+      randomNumber += 2
+    print("Número primo gerado com sucesso!")
+    print(f"{randomNumber}\n")
+    return randomNumber
   
   def totientFunction(a, b):
     n = a * b

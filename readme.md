@@ -34,8 +34,10 @@ Run Project
 - https://pt.wikipedia.org/wiki/RSA_(sistema_criptogr%C3%A1fico)
 - https://github.com/tarcisio-marinho/RSA
 - https://pt.wikipedia.org/wiki/Teste_de_primalidade_de_Miller-Rabin
+- https://justcryptography.com/miller-rabin-test/
 - https://pt.wikipedia.org/wiki/Assinatura_digital
 - https://datatracker.ietf.org/doc/html/rfc8017
 - https://www.youtube.com/watch?v=zi7gfind7mE
 - https://www.youtube.com/watch?v=-ShwJqAalOk
 - https://gist.github.com/ppoffice/e10e0a418d5dafdd5efe9495e962d3d2
+- https://asecuritysite.com/rsa/rsa_oaep
