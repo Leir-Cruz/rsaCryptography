@@ -15,11 +15,14 @@ class RsaCryptography:
   def cipherBytes(strFile, publicKey):
     [n,e] = publicKey
     encodedMessage = strFile.encode()
+    lenBytes = len(encodedMessage)
     convertedMessage = int.from_bytes(encodedMessage, byteorder='big')
-    print(f"Arquivo original em inteiros: {convertedMessage}\n")
+    print(f"Arquivo original em inteiros: {convertedMessage}")
     encryptedFile = pow(convertedMessage, e, n)
-    return encryptedFile
+    return [encryptedFile, lenBytes]
   
-  def decryptBytes(cipherText,n ,privateKey):
+  def decryptBytes(cipherText,n ,privateKey, lenBytes):
     decrypted = pow(cipherText, privateKey, n)
-    return decrypted
+    print(f"Arquivo decifrado em inteiros: {decrypted}")
+    decoded = decrypted.to_bytes(lenBytes, byteorder='big').decode()
+    return decoded
