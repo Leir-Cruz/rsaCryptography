@@ -32,6 +32,7 @@ class MillerRabin:
   def generatePrime():
     print("Gerando número primo de 1024 bits... isso pode demorar um pouco")
     while True:
+      print(".")
       randomNumber = random.getrandbits(1024)
       if(MillerRabin.isPrime(randomNumber)):
         print("Número primo gerado com sucesso!")
@@ -46,6 +47,7 @@ class MillerRabin:
   def findTotientE(totientNumber):
     print("Gerando coPrimo da chave pública... isso pode demorar um pouco")
     while True:
+      print(".")
       e = random.randint(2, totientNumber)
       if(Utils.isMutuallyPrime(totientNumber, e)):
         print(f"coPrimo para chave pública encontrado!")
@@ -56,13 +58,9 @@ class MillerRabin:
   def findPublicKeyAndTotient(primeA, primeB):
     [n, totientNumber] = MillerRabin.totientFunction(primeA, primeB)
     e = MillerRabin.findTotientE(totientNumber)
-    publicKey = [n, e, totientNumber]
-    return publicKey
+    return [n, e, totientNumber]
   
 
   def findPrivateKey(totientNumber, totientE):
     totientD = pow(totientE, -1, totientNumber)
     return totientD
-
-
-    

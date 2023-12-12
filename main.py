@@ -20,5 +20,5 @@ if __name__ == "__main__":
   print(f"chave privada: {privateKey}\n")
 
 
-  originalText = RsaCryptography.decrypt(cipherText, [privateKey, n])
+  originalText = RsaCryptography.decrypt(cipherText, n, privateKey)
   print(f"Arquivo decifrado: {originalText}\n")
