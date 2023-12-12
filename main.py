@@ -13,14 +13,15 @@ if __name__ == "__main__":
   publicKey = [n, e]
   print(f"par chave pública: {publicKey}\n")
 
-  cipherText = RsaCryptography.cipher(message, publicKey)
-  print(f"Arquivo cifrado: {cipherText}\n")
-
   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
   print(f"chave privada: {privateKey}\n")
 
+  cipherText = RsaCryptography.cipherBytes(message, publicKey)
+  print(f"Arquivo cifrado: {cipherText}\n")
+
+
   if((privateKey * e) % totientNumber):
-    originalText = RsaCryptography.decrypt(cipherText, n, privateKey)
+    originalText = RsaCryptography.decryptBytes(cipherText, n, privateKey)
     print(f"Arquivo decifrado: {originalText}\n")
   else:
     print("erro ao encontrar chave privada!")
