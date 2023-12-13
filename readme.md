@@ -36,7 +36,7 @@ Run Project
 
 #### Run OAEP encryption and decryption and Signature
 
-### `python3 main.py`
+### `python3 signature.py`
 
 # References
 

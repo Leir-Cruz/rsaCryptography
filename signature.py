@@ -1,25 +1,26 @@
-import hashlib
+from millerRabin import MillerRabin
+from rsaCryptography import RsaCryptography
+from signatureFunctions import Signature
 
-class Signature:
-  def hashMessage(message):
-    message = message.encode()
-    hasher = hashlib.sha3_256()
-    hasher.update(message)
-    updatedHash = hasher.digest()
-    return updatedHash
+if __name__ == "__main__":
+  file = open("test.txt", "r")
+  message = file.read()
+  print(f"Arquivo: {message}")
+  hashMessage = Signature.hashMessage(message)
+  print(f"Arquivo hash: {hashMessage}")
 
-  def genSignature(encodedMessage, privateKey, n):
-    convertedMessage = int.from_bytes(encodedMessage, byteorder='big')
-    encryptedFile = pow(convertedMessage, privateKey, n)
-    signature = encryptedFile
-    return signature
-  
-  def getSignatureBytes(signature, lenBytes=256):
-    signature = signature.to_bytes(lenBytes, byteorder='big')
-    return signature
+  primeA = MillerRabin.generatePrime()
+  primeB = MillerRabin.generatePrime()
 
-  
-  def getOriginalMessage(encodedSignature, e, n, lenBytes):
-    decrypted = pow(encodedSignature, e, n)
-    signature = decrypted.to_bytes(lenBytes, byteorder='big')
-    return signature
+  [n, e, totientNumber] = MillerRabin.findPublicKeyAndTotient(primeA, primeB);
+  publicKey = [n, e]
+  print(f"par chave pública: {publicKey}\n")
+
+  privateKey = MillerRabin.findPrivateKey(totientNumber, e)
+  print(f"chave privada: {privateKey}\n")
+
+  signature = Signature.genSignature(hashMessage, privateKey, n)
+  print(f"assinatura: {signature}\n")
+
+  rec = Signature.getOriginalMessage(signature, e, n, len(hashMessage))
+  print(f"original: {rec}")
