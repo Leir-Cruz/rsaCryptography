@@ -34,7 +34,7 @@ Run Project
 
 ### `python3 oaep.py`
 
-#### Run OAEP encryption and decryption and Signature
+#### test Signature functions only
 
 ### `python3 signature.py`
 
