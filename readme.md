@@ -26,7 +26,13 @@ In the project directory, you can run:
 
 Run Project
 
+#### Run simple rsa encryption decryption
+
 ### `python3 main.py`
+
+#### Run OAEP encryption and decryption
+
+### `python3 oaep.py`
 
 # References
 
