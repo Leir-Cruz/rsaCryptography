@@ -28,7 +28,7 @@ Run Project
 
 #### Run simple rsa encryption decryption
 
-### `python3 main.py`
+### `python3 rsa.py`
 
 #### Run OAEP encryption and decryption
 
