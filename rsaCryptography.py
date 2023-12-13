@@ -31,4 +31,4 @@ class RsaCryptography:
     decrypted = pow(cipherText, privateKey, n)
     print(f"Arquivo decifrado em inteiros: {decrypted}")
     message = Oaep.oaepDecode(decrypted, dataBlockMask, seedMask, encodedMessageSize ,label)
-    return message
+    return message.decode()
