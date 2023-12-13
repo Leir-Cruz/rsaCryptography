@@ -23,4 +23,33 @@ class Oaep:
     seedMask = Utils.mgf1(maskedDataBlock, generatedHashSize)
     maskedSeed = Utils.xor(seed, seedMask)
     encoded = b'\x00' + maskedSeed + maskedDataBlock
-    return encoded
+    return [encoded, dataBlockMask, seedMask]
+
+  def oaepDecode(encodedDataBlock, dataBlockMask, seedMask,encodedMessageSize,label):
+    encodedDataBlockBytes = encodedDataBlock.to_bytes(encodedMessageSize, byteorder= 'big')
+    [generatedHash, generatedHashSize] = Utils.hashLabel(label)
+    maskedSeed = encodedDataBlockBytes[1: generatedHashSize] 
+    maskedDataBlock = encodedDataBlockBytes[generatedHashSize + 1 :]
+
+    seed = Utils.xor(maskedSeed, seedMask)
+    dataBlock = Utils.xor(maskedDataBlock, dataBlockMask)
+
+    blockHash = dataBlock[:generatedHashSize]
+    assert blockHash == generatedHash
+    i = generatedHashSize
+    while i < len(dataBlock):
+        if dataBlock[i] == 0:
+            i += 1
+            continue
+        elif dataBlock[i] == 1:
+            i += 1
+            break
+        else:
+            raise Exception()
+    message = dataBlock[i:]
+    return message
+    
+
+    
+
+

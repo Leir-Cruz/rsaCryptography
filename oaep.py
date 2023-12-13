@@ -16,11 +16,11 @@ if __name__ == "__main__":
   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
   print(f"chave privada: {privateKey}\n")
 
-  cipherText = RsaCryptography.oaepCipher(message, publicKey)
+  [cipherText, dataBlockMask, seedMask, encodedMessageSize] = RsaCryptography.oaepCipher(message, publicKey)
   print(f"Arquivo cifrado: {cipherText}\n")
 
   if((privateKey * e) % totientNumber):
-    RsaCryptography.oaepDecrypt(cipherText, n, privateKey)
-    #print(f"Arquivo decifrado: {originalText}\n")
+    originalText = RsaCryptography.oaepDecrypt(cipherText, n, privateKey, dataBlockMask, seedMask, encodedMessageSize)
+    print(f"Arquivo decifrado: {originalText}\n")
   else:
     print("erro ao encontrar chave privada!")

@@ -20,13 +20,15 @@ class RsaCryptography:
   def oaepCipher(strFile, publicKey, label=b""):
     [n,e] = publicKey
     bytesMessage = strFile.encode()
-    encodedMessage = Oaep.oaepEncode(bytesMessage, n, label)
+    [encodedMessage, dataBlockMask, seedMask] = Oaep.oaepEncode(bytesMessage, n, label)
     print(f"Arquivo pós oaep: {encodedMessage}")
     convertedMessage = int.from_bytes(encodedMessage, byteorder='big')
     print(f"Arquivo original em inteiros: {convertedMessage}")
     encryptedFile = pow(convertedMessage, e, n)
-    return encryptedFile
+    return [encryptedFile,dataBlockMask, seedMask, len(encodedMessage)]
   
-  def oaepDecrypt(cipherText, n, privateKey):
+  def oaepDecrypt(cipherText, n, privateKey,dataBlockMask, seedMask,encodedMessageSize ,label=b""):
     decrypted = pow(cipherText, privateKey, n)
     print(f"Arquivo decifrado em inteiros: {decrypted}")
+    message = Oaep.oaepDecode(decrypted, dataBlockMask, seedMask, encodedMessageSize ,label)
+    return message
