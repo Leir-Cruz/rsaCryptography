@@ -10,8 +10,8 @@ class Oaep:
     paddingString = b'\x00' * paddingSize
     return paddingString
 
-  def oaepEncode(bytesMessage, n):
-    [generatedHash, generatedHashSize] = Utils.hashLabel()
+  def oaepEncode(bytesMessage, n, label):
+    [generatedHash, generatedHashSize] = Utils.hashLabel(label)
     k = Oaep.calculateK(n)
     seed = Utils.generateRandomSeed(generatedHashSize)
     paddingString = Oaep.generatePaddingString(k,len(bytesMessage),generatedHashSize)

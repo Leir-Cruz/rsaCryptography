@@ -17,11 +17,16 @@ class RsaCryptography:
     return decoded
   
 
-  def oaepCipher(strFile, publicKey):
+  def oaepCipher(strFile, publicKey, label=b""):
     [n,e] = publicKey
     bytesMessage = strFile.encode()
-    encodedMessage = Oaep.oaepEncode(bytesMessage, n)
+    encodedMessage = Oaep.oaepEncode(bytesMessage, n, label)
     print(f"Arquivo pós oaep: {encodedMessage}")
     convertedMessage = int.from_bytes(encodedMessage, byteorder='big')
+    print(f"Arquivo original em inteiros: {convertedMessage}")
     encryptedFile = pow(convertedMessage, e, n)
     return encryptedFile
+  
+  def oaepDecrypt(cipherText, n, privateKey):
+    decrypted = pow(cipherText, privateKey, n)
+    print(f"Arquivo decifrado em inteiros: {decrypted}")

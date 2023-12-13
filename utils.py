@@ -16,7 +16,7 @@ class Utils:
       return True
     return False
   
-  def hashLabel(label=b""):
+  def hashLabel(label):
     hasher = hashlib.sha1()
     hasher.update(label)
     updatedHash =  hasher.digest()
