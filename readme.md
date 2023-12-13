@@ -47,3 +47,4 @@ Run Project
 - https://www.youtube.com/watch?v=-ShwJqAalOk
 - https://gist.github.com/ppoffice/e10e0a418d5dafdd5efe9495e962d3d2
 - https://asecuritysite.com/rsa/rsa_oaep
+- https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding
