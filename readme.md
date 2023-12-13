@@ -34,6 +34,10 @@ Run Project
 
 ### `python3 oaep.py`
 
+#### Run OAEP encryption and decryption and Signature
+
+### `python3 main.py`
+
 # References
 
 - https://www.lambda3.com.br/2012/12/entendendo-de-verdade-a-criptografia-rsa/
