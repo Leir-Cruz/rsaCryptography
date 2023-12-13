@@ -16,4 +16,5 @@ if __name__ == "__main__":
   privateKey = MillerRabin.findPrivateKey(totientNumber, e)
   print(f"chave privada: {privateKey}\n")
 
-  RsaCryptography.oaepCipher(message, publicKey)
+  cipherText = RsaCryptography.oaepCipher(message, publicKey)
+  print(f"Arquivo cifrado: {cipherText}\n")

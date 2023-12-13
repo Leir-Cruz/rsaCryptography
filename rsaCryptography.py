@@ -22,3 +22,6 @@ class RsaCryptography:
     bytesMessage = strFile.encode()
     encodedMessage = Oaep.oaepEncode(bytesMessage, n)
     print(f"Arquivo pós oaep: {encodedMessage}")
+    convertedMessage = int.from_bytes(encodedMessage, byteorder='big')
+    encryptedFile = pow(convertedMessage, e, n)
+    return encryptedFile
